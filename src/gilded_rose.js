@@ -44,9 +44,11 @@ class Shop {
         this.items[i].sellIn -= 1;
       }
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != agedBrie && this.items[i].name != backstagePasses && this.items[i].name != sulfuras) {
-          if (this.items[i].quality > qualityMin) {
-            this.items[i].quality -= 1;
+        if (this.items[i].name != agedBrie && this.items[i].name != sulfuras) {
+          if (this.items[i].name != backstagePasses) {
+            if (this.items[i].quality > qualityMin) {
+              this.items[i].quality -= 1;
+            } 
           } else {
             this.items[i].quality = this.items[i].quality - this.items[i].quality;
           }
