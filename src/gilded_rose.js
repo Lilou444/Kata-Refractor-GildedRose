@@ -21,14 +21,12 @@ class Shop {
     const sulfuras = 'Sulfuras, Hand of Ragnaros';
     
 
-    for (var i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != agedBrie && this.items[i].name != backstagePasses) {
-        if (this.items[i].quality > qualityMin) {
-          if (this.items[i].name != sulfuras) {
-            this.items[i].quality = this.items[i].quality - 1;
-          }
-        }
-      } else {
+    for (let i = 0; i < this.items.length; i++) {
+         if(this.items[i].quality > qualityMin) {
+           if (this.items[i].name != agedBrie && this.items[i].name != backstagePasses && this.items[i].name != sulfuras){
+            this.items[i].quality -=  1;
+           }
+         } else {
         if (this.items[i].quality < qualityMax) {
           this.items[i].quality = this.items[i].quality + 1;
           if (this.items[i].name == backstagePasses) {
