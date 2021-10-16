@@ -74,5 +74,11 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).to.equal(36);
   });
 
+  it("should backstage passed is not ok when sellIn is less than 6", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 4, 33) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(35);
+  });
+
 });
 

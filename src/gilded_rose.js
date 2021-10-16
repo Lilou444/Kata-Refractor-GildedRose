@@ -77,10 +77,10 @@ class BackstagePasses extends UpdateQuality {
     let quality = 1;
     if(item.sellIn < 1){
       quality = -item.quality;
-    } else if(item.sellIn < 11){
-      quality = 2;
     } else if(item.sellIn < 6){
       quality = 3;
+    } else if(item.sellIn < 11){
+      quality = 2;
     } 
     this.setQuality(item, item.quality + quality);
     item.sellIn -= 1;
