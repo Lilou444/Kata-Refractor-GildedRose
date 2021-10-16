@@ -1,5 +1,5 @@
 var {expect} = require('chai');
-var {Shop, Item} = require('../src/gilded_rose.js');
+var {Shop, Item,Conjured} = require('../src/gilded_rose.js');
 describe("Gilded Rose", function() {
 
   it("should foo", function() {
