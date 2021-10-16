@@ -44,5 +44,35 @@ describe("Gilded Rose", function() {
     expect(items[0].quality).to.equal(50);
   });
 
+  it("should backstage passed is ok when sellIn is less than 0", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 0, 44) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(0);
+  });
+  
+  it("should backstage passed is not ok when sellIn is less than 0", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 0, 44) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(44);
+  });
+  
+  it("should backstage passed is ok when sellIn is less than 11", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 10, 40) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(42);
+  });
+
+  it("should backstage passed is not ok when sellIn is less than 11", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 10, 40) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(41);
+  });
+
+  it("should backstage passed is ok when sellIn is less than 6", function() {
+    const gildedRose = new Shop([ new Item("Backstage passes to a TAFKAL80ETC concert", 4, 33) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(36);
+  });
+
 });
 
