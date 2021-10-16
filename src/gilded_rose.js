@@ -18,9 +18,10 @@ class UpdateQuality {
     if (value > this.qualityMin){
       item.quality -= 1
     }
+    if (value < this.qualityMax){
+      item.quality +=1
+    }
   }
-  
-
 }
 
 class Shop extends UpdateQuality {
@@ -63,9 +64,7 @@ class Shop extends UpdateQuality {
             this.items[i].quality = this.items[i].quality - this.items[i].quality;
           }
         } else {
-          if (this.items[i].quality < this.qualityMax) {
-            this.items[i].quality += 1;
-          }
+          this.setQuality(this.items[i],this.items[i].quality)
         }
       }
     }
