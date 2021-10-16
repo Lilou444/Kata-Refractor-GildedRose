@@ -6,15 +6,27 @@ class Item {
   }
 }
 
-class Shop {
+class UpdateQuality {
   constructor(items=[]){
+    this.qualityMin = 0;
+    this.qualityMax =50;
     this.items = items;
+
   }
+
+  setQuality(item,value){
+    if (value > this.qualityMin){
+      item.quality -= 1
+    }
+  }
+  
+
+}
+
+class Shop extends UpdateQuality {
 
   
   updateQuality() {
-    const qualityMin = 0;
-    const qualityMax = 50;
 
     const agedBrie = 'Aged Brie';
     const backstagePasses = 'Backstage passes to a TAFKAL80ETC concert';
@@ -23,17 +35,15 @@ class Shop {
 
     for (let i = 0; i < this.items.length; i++) {
       if (this.items[i].name != agedBrie && this.items[i].name != backstagePasses && this.items[i].name != sulfuras) {
-        if (this.items[i].quality > qualityMin) {    
-            this.items[i].quality -= 1;
-        }
+        this.setQuality(this.items[i],this.items[i].quality)
       } 
       
       else {
-        if (this.items[i].quality < qualityMax) {
+        if (this.items[i].quality < this.qualityMax) {
           this.items[i].quality += 1;
           if (this.items[i].name == backstagePasses) {
             if (this.items[i].sellIn < 11 || this.items[i].sellIn < 6) {
-              if (this.items[i].quality < qualityMax) {
+              if (this.items[i].quality < this.qualityMax) {
                 this.items[i].quality += 1;
               }
             }
@@ -46,14 +56,14 @@ class Shop {
       if (this.items[i].sellIn < 0) {
         if (this.items[i].name != agedBrie && this.items[i].name != sulfuras) {
           if (this.items[i].name != backstagePasses) {
-            if (this.items[i].quality > qualityMin) {
+            if (this.items[i].quality > this.qualityMin) {
               this.items[i].quality -= 1;
             } 
           } else {
             this.items[i].quality = this.items[i].quality - this.items[i].quality;
           }
         } else {
-          if (this.items[i].quality < qualityMax) {
+          if (this.items[i].quality < this.qualityMax) {
             this.items[i].quality += 1;
           }
         }
