@@ -15,10 +15,10 @@ class UpdateQuality {
   setQuality(item,value){
     if(value < this.qualityMax && value > this.qualityMin){
       item.quality = value;
-    } else if (value > this.qualityMin){
-      item.quality -= 1;
-    } else if (value < this.qualityMax){
-      item.quality += 1;
+    } else if (value <= this.qualityMin){
+      item.quality = this.qualityMin;
+    } else if (value >= this.qualityMax){
+      item.quality = this.qualityMax;
     }
   }
   
@@ -57,15 +57,15 @@ class BackstagePasses extends UpdateQuality {
   }
 
   updateItem(item){
-    let quality = 0;
+    let quality = 1;
     if(item.sellIn < 1){
-      item.quality = quality;
-      this.setQuality(item, item.quality);
+      quality = -item.quality;
     } else if(item.sellIn < 11){
-      this.setQuality(item, item.quality + 2);
+      quality = 2;
     } else if(item.sellIn < 6){
-      this.setQuality(item, item.quality + 3);
+      quality = 3;
     } 
+    this.setQuality(item, item.quality + quality);
     item.sellIn -= 1;
   }
 }
