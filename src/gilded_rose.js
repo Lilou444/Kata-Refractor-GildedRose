@@ -43,11 +43,13 @@ class Conjured extends UpdateQuality {
   }
 
   updateItem(item){
+    let quality = 0;
     if(item.sellIn < 1){
-      this.setQuality(item, item.quality - 4);
+      quality = 4
     } else {
-      this.setQuality(item, item.quality - 2);
+      quality = 2
     }
+    this.setQuality(item, item.quality - quality);
     item.sellIn -= 1;
   }
 }
@@ -98,6 +100,7 @@ class Shop {
   constructor(items=[]){
     this.items = items;
     this.itemUpdate = [
+      new Conjured(),
       new AgedBrie(),
       new BackstagePasses(),
       new Sulfuras(),
@@ -116,9 +119,4 @@ class Shop {
 module.exports = {
   Item,
   Shop,
-  UpdateQuality,
-  BackstagePasses,
-  AgedBrie,
-  Sulfuras,
-  Conjured,
 }

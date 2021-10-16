@@ -1,17 +1,11 @@
 var {expect} = require('chai');
-var {Shop, Item,Conjured} = require('../src/gilded_rose.js');
+var {Shop, Item} = require('../src/gilded_rose.js');
 describe("Gilded Rose", function() {
 
-  it("should foo", function() {
-    const gildedRose = new Shop([ new Item("foo", 0, 0) ]);
+  it("should conjured is ok", function() {
+    const gildedRose = new Shop([ new Item("Conjured Mana Cake", 0, 6) ]);
     const items = gildedRose.updateQuality();
-    expect(items[0].name).to.equal("fixme");
+    console.log(items);
+    expect(items[0].quality).to.equal(4);
   });
-
-  it("conjured is ok", function() {
-    const conjured = new Conjured();
-    const item =  ['Conjured Mana Cake', 3, 6];
-    expect(conjured.updateItem(item)).to.be.equal(2);
-  });
-
 });
