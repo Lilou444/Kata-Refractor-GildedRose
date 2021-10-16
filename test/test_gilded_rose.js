@@ -8,4 +8,10 @@ describe("Gilded Rose", function() {
     expect(items[0].name).to.equal("fixme");
   });
 
+  it("conjured is ok", function() {
+    const conjured = new Conjured();
+    const item =  ['Conjured Mana Cake', 3, 6];
+    expect(conjured.updateItem(item)).to.be.equal(2);
+  });
+
 });

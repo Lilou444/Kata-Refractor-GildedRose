@@ -36,6 +36,21 @@ class UpdateQuality {
   }
 }
 
+class Conjured extends UpdateQuality {
+
+  itemName(item){
+    return item.name == 'Conjured Mana Cake';
+  }
+
+  updateItem(item){
+    if(item.sellIn < 1){
+      this.setQuality(item, item.quality - 4);
+    } else {
+      this.setQuality(item, item.quality - 2);
+    }
+    item.sellIn -= 1;
+  }
+}
 class AgedBrie extends UpdateQuality {
   itemName(item){
     return item.name == 'Aged Brie';
@@ -100,5 +115,10 @@ class Shop {
 }
 module.exports = {
   Item,
-  Shop
+  Shop,
+  UpdateQuality,
+  BackstagePasses,
+  AgedBrie,
+  Sulfuras,
+  Conjured,
 }
